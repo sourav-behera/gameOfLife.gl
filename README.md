@@ -10,11 +10,19 @@ To build and run the Game of Life, follow these steps:
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/game-of-life.git
+    git clone --recursive https://github.com/sourav-behera/gameOfLife.gl.git
     cd game-of-life
     ```
+2. **Build GLFW**
+   ```sh
+    mkdir vendor/glfw/build
+    cd vendor/glfw/build
+    cmake ..
+    make
+    cd -
 
-2. **Build the project:**
+   ```
+3. **Build the project:**
     ```sh
     mkdir build
     cd build
@@ -22,7 +30,8 @@ To build and run the Game of Life, follow these steps:
     make
     ```
 
-3. **Run the executable:**
+4. **Run the executable:**
     ```sh
     ./gameOfLife
     ```
+    Press **Space** to start the simulation
