@@ -35,3 +35,4 @@ To build and run the Game of Life, follow these steps:
     ./gameOfLife
     ```
     Press **Space** to start the simulation
+![gol_v1](https://github.com/user-attachments/assets/60ae4f34-b05c-46bf-82fb-06819e394657)
