@@ -10,7 +10,7 @@ To build and run the Game of Life, follow these steps:
 
 1. **Clone the repository:**
     ```sh
-    git clone --recursive https://github.com/sourav-behera/gameOfLife.gl.git
+    git clone --recursive https://github.com/sourav-behera/gameOfLife.gl.git game-of-life
     cd game-of-life
     ```
 2. **Build GLFW**
