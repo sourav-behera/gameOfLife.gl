@@ -4,9 +4,15 @@
 #include <shader.h>
 #include <grid.h>
 #include <quad.h>
+#include <unistd.h>
+#include <gol.h>
 
+// Window Specific
 int window_Width = 800;
 int window_Height = 800;
+
+// Game of Life Specific
+const int GRID_SIZE = 70;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -30,9 +36,17 @@ int main() {
 
     Shader quadShader("../assets/shaders/vertexShaders/quad.vert", "../assets/shaders/fragmentShaders/quad.frag");
 
-    Grid grid(10, 0.18f);
-    Quad quad1(0, 0, 0.1f, 0.1f, 0.18f);
-    Quad quad2(1, 1, 0.1f, 0.1f, 0.18f);
+
+    Grid grid(GRID_SIZE);
+
+    std::vector<std::vector<int>> seed(GRID_SIZE, std::vector<int>(GRID_SIZE));
+
+
+    seed[10][10] = 1, seed[10][11] = 1, seed[10][12] = 1;
+    seed[9][11] = 1, seed[11][12] = 1;
+
+    GameOfLife gol(seed, GRID_SIZE, &grid);
+    bool start = false;
 
     while(!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
@@ -42,13 +56,16 @@ int main() {
             glfwSetWindowShouldClose(window, true);
         }
 
+        if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+            start = true;
+        }
         // render logic
-
-        //grid
         grid.drawGrid();
-        quad1.Draw();
-        quad2.Draw();
+        gol.renderPopulation();
 
+        if (start) {
+            gol.updatePopulation();
+        }
         // refresh
         glfwSwapBuffers(window);
         glfwPollEvents();

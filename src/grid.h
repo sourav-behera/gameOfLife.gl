@@ -7,16 +7,21 @@
 
 class Grid {
     private:
-        int size = 10;
+        int size;
         uint VAO, VBO, EBO;
         Shader* gridShader;
+
     public:
-        float cellwidth = 1.8f / (float)size;
-        //TODO: change the offset
+        float cellwidth;
         float offsetX = 0.1f;
         float offsetY = 0.1f;
-        Grid(int size, float cellwidth);
+
+    public:
+        Grid(int size);
         void drawGrid() const;
+        float getCellWidth() const;
+        float getOffsetX() const;
+        float getOffsetY() const;
 };
 
 #endif

@@ -1,5 +1,9 @@
 #include <quad.h>
 
+Quad::Quad(){
+    this->alive = false;
+}
+
 Quad::Quad(int x, int y, float offsetX, float offsetY, float cellWidth) {
     this->x = x;
     this->y = y;
@@ -40,10 +44,18 @@ Quad::Quad(int x, int y, float offsetX, float offsetY, float cellWidth) {
     quadShader = new Shader("../assets/shaders/vertexShaders/quad.vert", "../assets/shaders/fragmentShaders/quad.frag");
 }
 
-void Quad::Draw() const {
+void Quad::draw() const {
     quadShader->Use();
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+}
+
+bool Quad::getLifeState() const {
+    return this->alive;
+}
+
+void Quad::setLifeState(bool aliveState) {
+    this->alive = aliveState;
 }

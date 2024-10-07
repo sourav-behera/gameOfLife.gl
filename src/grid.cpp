@@ -1,9 +1,8 @@
 #include <grid.h>
 
-Grid::Grid(int size = 10, float cellwidth = -1.0f) {
+Grid::Grid(int size) {
     this->size = size;
-    if (cellwidth != -1.0 ) this->cellwidth = cellwidth;
-
+    this->cellwidth = 1.8f / (float)size;
     GLfloat vertices[(size+1)*6*2];
     GLuint indices[(size+1)*2*2];    
 
@@ -65,4 +64,16 @@ void Grid::drawGrid() const {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glDrawElements(GL_LINES, (size+1)*2*2, GL_UNSIGNED_INT, 0);
         
+}
+
+float Grid::getOffsetX() const {
+    return offsetX;
+}
+
+float Grid::getOffsetY() const {
+    return offsetY;
+}
+
+float Grid::getCellWidth() const {
+    return cellwidth;
 }

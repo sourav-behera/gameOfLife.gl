@@ -8,7 +8,8 @@
             "name": "gl debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "enter program name, for example ${workspaceFolder}/build/GameOfLife",
+            "program": "${workspaceFolder}/build/GameOfLife",
+            "cwd": "${fileDirname}",
             "MIMode": "gdb",
             "setupCommands": [
                 {

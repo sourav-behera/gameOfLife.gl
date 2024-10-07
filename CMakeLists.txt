@@ -8,6 +8,7 @@ add_executable(GameOfLife
     src/utils/shader.cpp
     src/grid.cpp
     src/quad.cpp
+    src/gol.cpp
 )
 
 include_directories(

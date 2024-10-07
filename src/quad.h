@@ -14,8 +14,11 @@ class Quad {
         Shader* quadShader;
 
     public:
+        Quad();
         Quad(int x, int y, float offsetX, float offsetY, float cellwidth);
-        void Draw() const;
+        void draw() const;
+        bool getLifeState() const;
+        void setLifeState(bool aliveState);
 };
 
 #endif
